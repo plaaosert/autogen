@@ -1,0 +1,5 @@
+{
+  "name": "apache2-ubuntu",
+  "desc": "Default configuration of Apache for Ubuntu (latest version)",
+  "type": "WEB"
+}

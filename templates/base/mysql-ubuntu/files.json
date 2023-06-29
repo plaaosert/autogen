@@ -1,0 +1,36 @@
+{
+  "variables": {
+      "MYSQL_PASSWORD": {"method": "random_alnum", "args": [32]},
+      "MYSQL_ROOT_PASSWORD": {"method": "random_alnum", "args": [32]}
+  },
+
+  "actions": [
+    {
+      "source_file": "Dockerfile",
+      "target_file": "Dockerfile",
+      "target_host": "HOST",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "docker-entrypoint.sh",
+      "target_file": "docker-entrypoint.sh",
+      "target_host": "HOST",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "config/my.cnf",
+      "target_file": "config/my.cnf",
+      "target_host": "HOST",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "config/conf.d/docker.cnf",
+      "target_file": "config/conf.d/docker.cnf",
+      "target_host": "HOST",
+      "action_type": "COPY"
+    }
+  ]
+}

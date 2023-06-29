@@ -1,0 +1,10 @@
+{
+  "name": "storefront-apache2",
+  "desc": "Storefront site including a set of random shop items, search, a contact form and admin login function (no credentials by default).",
+  "compatible_bases": [
+    "apache2"
+  ],
+  "required_bases": [
+    "SQL"
+  ]
+}

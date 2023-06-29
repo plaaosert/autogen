@@ -1,0 +1,7 @@
+This file will have some cool variables in it:
+
+Flag: flag{g0u911g8qrgDYkXLQDQuoNbJhrJ8m3HY}
+Name of base template: container_web
+
+Variable test_var from files.json: MfUaNoiYIMXsSy72ACUqzPoBnFmfJ4JHJgnNs48xferlPxOPspu2DUvlvTuHQRgs
+Saved variable "test_password" from base: 4FmwWOqqTqpGGj0kiSjH

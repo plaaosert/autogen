@@ -1,0 +1,35 @@
+{
+  "variables": {
+      "test_name": "apache2 test",
+      "test_password": {"method": "random_alnum", "args": [20]}
+  },
+
+  "actions": [
+    {
+      "source_file": "Dockerfile",
+      "target_file": "Dockerfile",
+      "target_host": "HOST",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "docker-entrypoint.sh",
+      "target_file": "docker-entrypoint.sh",
+      "target_host": "HOST",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "prevent_browsing.txt",
+      "target_file": "/etc/apache2/apache2.conf",
+      "action_type": "REPLACE",
+      "match_lines": "169-173"
+    },
+
+    {
+      "source_file": "info.txt",
+      "target_file": "/root/info.txt",
+      "action_type": "COPY"
+    }
+  ]
+}

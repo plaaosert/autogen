@@ -1,0 +1,138 @@
+{
+  "variables": {
+      "test_name": "test",
+      "test_password": {"method": "random_alnum", "args": [20]}
+  },
+
+  "actions": [
+    {
+      "source_file": "topbar.php",
+      "target_file": "/var/www/html/topbar.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "styling.php",
+      "target_file": "/var/www/html/styling.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "session.php",
+      "target_file": "/var/www/html/session.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "index.php",
+      "target_file": "/var/www/html/index.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "product_listing.php",
+      "target_file": "/var/www/html/product_listing.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "show_product.php",
+      "target_file": "/var/www/html/show_product.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "contact_form.php",
+      "target_file": "/var/www/html/contact_form.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "employee_login.php",
+      "target_file": "/var/www/html/employee_login.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "search_products.php",
+      "target_file": "/var/www/html/search_products.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "admin_area.php",
+      "target_file": "/var/www/html/admin_area.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "contact.php",
+      "target_file": "/var/www/html/contact.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "employee_login_form.php",
+      "target_file": "/var/www/html/employee_login_form.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "employee_logout.php",
+      "target_file": "/var/www/html/employee_logout.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "css/site.css",
+      "target_file": "/var/www/html/css/site.css",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "images/productimg.png",
+      "target_file": "/var/www/html/images/productimg.png",
+      "action_type": "COPYBIN"
+    },
+
+    {
+      "source_file": "info.txt",
+      "target_file": "/root/info.txt",
+      "action_type": "APPEND",
+      "match_lines": "0"
+    },
+
+    {
+      "source_file": "docker-entrypoint.sh",
+      "target_file": "docker-entrypoint.sh",
+      "target_host": "HOST",
+      "action_type": "REPLACE",
+      "match_regex": "# REPLACE ME TO EDIT DOCKER STARTUP"
+    },
+
+    {
+      "source_file": "data.sql",
+      "target_file": "/tmp/data.sql",
+      "action_type": "COPY"
+    },
+
+    {
+      "target_file": "/var/www/html/index.html",
+      "action_type": "DELETE"
+    },
+
+    {
+      "source_code": "generate_products_sql.py",
+      "target_file": "/tmp/data.sql",
+      "action_type": "REPLACE",
+      "match_regex": "\\(# REPLACE HERE FOR PRODUCTS SQL\\)"
+    },
+
+    {
+      "source_code": "generate_users_sql.py",
+      "target_file": "/tmp/data.sql",
+      "action_type": "REPLACE",
+      "match_regex": "-- employee login insert"
+    }
+  ]
+}

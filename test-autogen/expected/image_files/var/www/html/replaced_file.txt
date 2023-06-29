@@ -1,0 +1,14 @@
+This is a file which will be operated on with REPLACE actions.
+-
+sup guys
+-
+This line will also have all occurrences of the word "eleph*nt" replaced with the word "duck". Elephant duck elEphant duck Duck duck Elephant DUCK ELEPHANT duck
+-
+sup guys
+-
+Line 1! duck <- replaced
+Line 2! Elephant <- not replaced
+Line 3! duck <- originally that
+-
+two more lines below this one!
+

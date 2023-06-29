@@ -1,0 +1,203 @@
+{
+  "variables": {
+      "test_name": "test",
+      "test_password": {"method": "random_alnum", "args": [20]}
+  },
+
+  "actions": [
+    {
+      "source_file": "debug.php",
+      "target_file": "/var/www/html/debug.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "target_file": "/var/www/html/index.html",
+      "action_type": "DELETE"
+    },
+
+    {
+      "source_file": "docker-entrypoint.sh",
+      "target_file": "docker-entrypoint.sh",
+      "target_host": "HOST",
+      "action_type": "REPLACE",
+      "match_regex": "# REPLACE ME TO EDIT DOCKER STARTUP"
+    },
+
+    {
+      "source_file": "css/site.css",
+      "target_file": "/var/www/html/css/site.css",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "topbar.php",
+      "target_file": "/var/www/html/topbar.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "styling.php",
+      "target_file": "/var/www/html/styling.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "session.php",
+      "target_file": "/var/www/html/session.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "index.php",
+      "target_file": "/var/www/html/index.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "image_listing.php",
+      "target_file": "/var/www/html/image_listing.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "view_image.php",
+      "target_file": "/var/www/html/view_image.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "profile.php",
+      "target_file": "/var/www/html/profile.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "login.php",
+      "target_file": "/var/www/html/login.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "login_form.php",
+      "target_file": "/var/www/html/login_form.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "register.php",
+      "target_file": "/var/www/html/register.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "register_form.php",
+      "target_file": "/var/www/html/register_form.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "add_comment.php",
+      "target_file": "/var/www/html/add_comment.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "post_image.php",
+      "target_file": "/var/www/html/post_image.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "add_like.php",
+      "target_file": "/var/www/html/add_like.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "logout.php",
+      "target_file": "/var/www/html/logout.php",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "data.sql",
+      "target_file": "/tmp/data.sql",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": ".htaccess",
+      "target_file": "/var/www/html/uploads/.htaccess",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "images/img1.png",
+      "target_file": "/var/www/html/uploads/img1.png",
+      "action_type": "COPYBIN"
+    },
+
+    {
+      "source_file": "images/img2.png",
+      "target_file": "/var/www/html/uploads/img2.png",
+      "action_type": "COPYBIN"
+    },
+
+    {
+      "source_file": "images/img3.png",
+      "target_file": "/var/www/html/uploads/img3.png",
+      "action_type": "COPYBIN"
+    },
+
+    {
+      "source_file": "images/img4.png",
+      "target_file": "/var/www/html/uploads/img4.png",
+      "action_type": "COPYBIN"
+    },
+
+    {
+      "source_file": "images/img5.png",
+      "target_file": "/var/www/html/uploads/img5.png",
+      "action_type": "COPYBIN"
+    },
+
+    {
+      "source_file": "images/img6.png",
+      "target_file": "/var/www/html/uploads/img6.png",
+      "action_type": "COPYBIN"
+    },
+
+    {
+      "source_file": "images/img7.png",
+      "target_file": "/var/www/html/uploads/img7.png",
+      "action_type": "COPYBIN"
+    },
+
+    {
+      "source_file": "images/img8.png",
+      "target_file": "/var/www/html/uploads/img8.png",
+      "action_type": "COPYBIN"
+    },
+
+    {
+      "source_file": "images/img9.png",
+      "target_file": "/var/www/html/uploads/img9.png",
+      "action_type": "COPYBIN"
+    },
+
+    {
+      "source_text": "upload_tmp_dir = /tmp/",
+      "target_file": "/etc/php/8.1/apache2/php.ini",
+      "action_type": "REPLACE",
+      "match_regex": ";upload_tmp_dir ="
+    },
+
+    {
+        "source_code": "generate_initial_data.py",
+        "target_file": "/tmp/data.sql",
+        "action_type": "REPLACE",
+        "match_regex": "-- insert prebaked data here"
+    }
+  ]
+}

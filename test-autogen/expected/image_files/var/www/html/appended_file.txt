@@ -1,0 +1,25 @@
+To these colours three, a trio of colours shall be appended. [append (R*d), append (Y*llow), append (G*een)]
+
+Red
+deRRed,
+
+Yellow
+wolleYYellow
+
+and Green
+neerGGreen
+
+To the quartet of lines below, a fifth will join them. [append 12]
+One
+Two
+Three
+Four
+Five
+
+Line 15, 16, and 17 all, on the word "ghost" their gaze shall fall. [append 15,16,17]
+15
+ghost
+16
+ghost
+17
+ghost

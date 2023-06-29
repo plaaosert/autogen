@@ -1,0 +1,10 @@
+{
+  "name": "imagesite-apache2",
+  "desc": "Image uploading site allowing users to create an account then upload images with specific captions as well as like or comment on other images. A few randomly generated images and users are created automatically.",
+  "compatible_bases": [
+    "apache2"
+  ],
+  "required_bases": [
+    "SQL"
+  ]
+}

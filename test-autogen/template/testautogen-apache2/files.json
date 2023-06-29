@@ -1,0 +1,110 @@
+{
+  "variables": {
+      "test_var": {"method": "random_alnum", "args": [64]}
+  },
+
+  "actions": [
+    {
+      "target_file": "/var/www/html/index.html",
+      "action_type": "DELETE"
+    },
+
+    {
+      "source_file": "robot.png",
+      "target_file": "/var/www/html/robot.png",
+      "action_type": "COPYBIN"
+    },
+
+    {
+      "source_file": "generic_file.txt",
+      "target_file": "/var/www/html/generic_file.txt",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "replaced_file.txt",
+      "target_file": "/var/www/html/replaced_file.txt",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_text": "Line 1! elephant <- replaced\nLine 2! Elephant <- not replaced\nLine 3! duck <- originally that",
+      "target_file": "/var/www/html/replaced_file.txt",
+      "action_type": "REPLACE",
+      "match_lines": "11"
+    },
+
+    {
+      "source_text": "sup guys",
+      "target_file": "/var/www/html/replaced_file.txt",
+      "action_type": "REPLACE",
+      "match_lines": "2,6-9"
+    },
+
+    {
+      "source_text": "duck",
+      "target_file": "/var/www/html/replaced_file.txt",
+      "action_type": "REPLACE",
+      "match_regex": "elephant"
+    },
+
+    {
+      "source_file": "variable_file.txt",
+      "target_file": "/var/www/html/variable_file.txt",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": "appended_file.txt",
+      "target_file": "/var/www/html/appended_file.txt",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_text": "ghost",
+      "target_file": "/var/www/html/appended_file.txt",
+      "action_type": "APPEND",
+      "match_lines": "15,16,17"
+    },
+
+    {
+      "source_text": "Five",
+      "target_file": "/var/www/html/appended_file.txt",
+      "action_type": "APPEND",
+      "match_lines": "12"
+    },
+
+    {
+      "source_text": "neerG\\1",
+      "target_file": "/var/www/html/appended_file.txt",
+      "action_type": "APPEND",
+      "match_regex": "(Green)"
+    },
+
+    {
+      "source_text": "wolleY\\1",
+      "target_file": "/var/www/html/appended_file.txt",
+      "action_type": "APPEND",
+      "match_regex": "(Yellow)"
+    },
+
+    {
+      "source_text": "deR\\1",
+      "target_file": "/var/www/html/appended_file.txt",
+      "action_type": "APPEND",
+      "match_regex": "(Red)"
+    },
+
+    {
+      "source_file": "unicode_file.txt",
+      "target_file": "/var/www/html/unicode_file.txt",
+      "action_type": "COPY"
+    },
+
+    {
+      "source_file": ".htaccess",
+      "target_file": "/var/www/html/.htaccess",
+      "action_type": "COPY"
+    }
+  ]
+}

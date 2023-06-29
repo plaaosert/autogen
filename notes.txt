@@ -1,0 +1,160 @@
+As a rule, templates are applied in the order
+- Base
+- Site
+- Vulnerability
+
+templates/base
+    Base templates for servers. This essentially means server configurations and Dockerfiles.
+    Bases can also be things like SQL servers. Thanks, Docker.
+    There can be multiple bases. They will implicitly network together (hopefully)
+    and this should be sorted out when we make the site.
+
+    Only one base may exist for a given type in a single setup.
+
+    config.json
+    {
+      "name": "name",
+      "desc": "desc",
+      "type": "WEB" | "SQL" | ...
+    }
+
+templates/site
+    Base website templates.
+    Website templates must be attached to a compatible web base (of the WEB type)
+    AND all base types in "required_bases" must be present.
+
+    config.json
+    {
+      "name": "name",
+      "desc": "desc",
+      "compatible_bases": [
+        "compatible", "base", "server", "names", "can", "be", "sub", "strings"
+      ]
+      "required_bases": [
+        "SQL",
+      ]
+    }
+
+templates/vulnerability
+    Vulnerabilities. Vulnerabilities will contain a list of server bases and website templates which they support
+    (both need to be supported for the vulnerability to be compatible).
+
+    Since the vulnerability is often (but not always!) dependent on the website template, there may exist variants
+    which do the same thing on different websites.
+
+    Multiple vulnerabilities can be combined in a single site, so vulnerabilities also have a list of which other
+    vulnerabilities they support.
+
+    config.json
+    {
+      "name": "name",
+      "desc": "desc",
+      "difficulty": [0-99],
+      "compatible_bases": [
+        "compatible", "base", "server", "names", "can", "be", "sub", "strings"
+      ],
+      "compatible_sites": [
+        "compatible", "site", "names", "can", "be", "sub", "strings"
+      ]
+    }
+
+need to work out how we're doing templating. also need to look at how we'll store file deltas;
+we can either store entire edits of a site template (probably bad) or find some way to show where
+lines need to be added.
+
+maybe like
+- - -
+{{ [insert|replace]:[lineno] }}
+things
+things
+things
+- - -
+which will either insert 3 lines of "things" at lineno or replace the 3 lines starting with lineno.
+
+^ ansible syntax for playbooks, jsonified.
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html#playbooks-intro
+
+(files.json is used by all templates since it's the way they define how files are modified.)
+(generally, bases should COPY all the time. sites should COPY new files and EDIT configs,
+while vulnerabilities generally should only EDIT.)
+
+files.json
+{
+  "variables": {
+      "name": "test",  // string "test"
+      "MYSQL_PASSWORD": {"method": "random_alnum", "args": [20]}  // call random generation function "random_alnum" with arguments [20]
+  },
+
+  "actions": [
+    {
+      "source_file": "path/to/file/content.txt",
+      "source_text": "a shorthand for small amounts of text",
+
+      "target_file": "/path/to/file.conf"
+      "target_host": "HOST" | "IMAGE"  // implicitly "IMAGE"
+      "action_type": "COPY" | "REPLACE" | "APPEND"
+
+      "match_lines": "18-24, 37, 56"  // Line mode; lines 18 to 24, line 37 and line 56
+      "match_regex": "<thing>(\\w+)</thing>\n.*<object>"  // Regex mode
+    },
+
+    {
+    ...
+  ]
+}
+
+COPY    - copy the entire source_* to target_file, replacing any existing file.
+REPLACE - replace the lines from match_* with source_*.
+              - In line mode, each line from the source will be inserted into the file,
+                moving through the list of match_lines. Once reaching the end, the rest of the source
+                (all lines) will be added at once in the final position.
+              - In regex mode, the entire contents of source_* will be inserted verbatim in
+                place of the first capturing group, for every match found in the target file.
+APPEND  - append the content of source_* in the position of match_*.
+              - In line mode, every single line selected will have source_* added below it.
+              - In regex mode, source_* in its entirety is appended directly after every matched group.
+
+example of constants;
+$$FLAG$$ => resolves to the contents of the randomly generated flag
+$$BASE["type"]$$    => resolves to the docker image name of the given base, found by type, if it exists.
+    $$BASE["SQL"]$$ => the image name of the SQL server image.
+
+all variables in files.json are also added to the list of default variables, accessed the same
+way as above (e.g. $$name$$)
+
+docker compose is **NOT** designed for this. it relies on images and volumes existing already and is
+generally pretty cumbersome to use. if possible, we kind of have to avoid this :-(
+
+luckily we can make a docker network
+https://www.tutorialworks.com/container-networking/
+
+this *should* let us have docker containers talk to each other with image names as hostnames -
+since we can control image names, we can set this up in a reasonably good manner.
+it might end up being better to use compose, but we'll cross that bridge once we finish
+the code to make a single docker image :-)
+
+docker compose might work, actually
+
+https://arnavtripathy98.medium.com/deploying-a-simple-web-application-apache2-and-mysql-using-docker-e71b79c6e4e
+
+https://stackoverflow.com/questions/35418321/how-to-copy-a-file-to-a-docker-container-before-starting-running-it
+https://stackoverflow.com/questions/32112035/docker-cp-doesnt-copy-file-into-container/32126677#32126677
+
+https://github.com/moby/moby/issues/26944
+seems you can just
+
+$ docker create --name web -p 8080:80 nginx:alpine
+52f2d3b0c44ad32d4245412cb79246775b635c20364dff0681a222a0a5f5fb0c
+
+$ docker cp index.html web:/usr/share/nginx/html/
+$ docker start web
+web
+
+which is nice
+
+https://docs.docker.com/engine/reference/commandline/build/#options
+
+docker networks
+https://earthly.dev/blog/docker-mysql/
+
+https://docs.docker.com/network/network-tutorial-standalone/#use-user-defined-bridge-networks

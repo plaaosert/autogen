@@ -1,0 +1,10 @@
+{
+  "name": "testautogen-apache2",
+  "desc": "Test template with coverage of many different files",
+  "compatible_bases": [
+    "apache2"
+  ],
+  "required_bases": [
+
+  ]
+}

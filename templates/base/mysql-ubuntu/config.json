@@ -1,0 +1,5 @@
+{
+  "name": "mysql-ubuntu",
+  "desc": "Default configuration of MySQL for Ubuntu (latest version)",
+  "type": "SQL"
+}

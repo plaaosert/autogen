@@ -1,0 +1,7 @@
+This file will have some cool variables in it:
+
+Flag: $$FLAG$$
+Name of base template: $$BASE["WEB"]$$
+
+Variable test_var from files.json: $$test_var$$
+Saved variable "test_password" from base: $$SAVEDVARS_WEB["test_password"]$$

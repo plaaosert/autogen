@@ -1,0 +1,131 @@
+.pagebuffer {
+  height: 80px;
+}
+
+.post-container {
+  margin-top: 48px;
+
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.single-post-container {
+  margin-top: 48px;
+}
+
+.post-entry {
+  text-align: center;
+}
+
+.post-footer {
+  display: inline-block;
+}
+
+.post-footer * {
+  float: left;
+  margin-top: 0px;
+  margin-right: 12px;
+  margin-left: 8px;
+}
+
+.single-post-container .post-entry {
+  float: left;
+  margin-left: 100px;
+}
+
+.single-post-container .comments-entry {
+  float: left;
+  margin-left: 100px;
+}
+
+p.comment-content {
+  margin-bottom: 24px;
+  line-height: 0px;
+}
+
+.topbar {
+  overflow: hidden;
+  background-color: #ddd;
+  margin-bottom: 16px;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  filter: drop-shadow(1px 2px 3px black);
+}
+
+.topbar a {
+  float: left;
+  display: block;
+  color: green;
+  text-align: center;
+  padding: 14px;
+  margin: 8px;
+  margin-right: 2px;
+  text-decoration: none;
+  background-color: white;
+}
+
+.topbar a:hover {
+  background-color: #bbb;
+  color: darkgreen;
+}
+
+.topbar a.disabled {
+  background-color: #888;
+  color: black;
+}
+
+.searchbox {
+  float: right;
+}
+
+.searchbox input {
+  padding: 10px;
+  margin-top: 12px;
+  font-size: 16px;
+  border: none;
+}
+
+.searchbox button {
+  float: right;
+  padding: 10px;
+  margin-left: 8px;
+  margin-top: 12px;
+  margin-right: 16px;
+  background: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.searchbox button:hover {
+  background-color: #bbb;
+  color: darkgreen;
+}
+
+.search-result {
+  margin-bottom: 20px;
+}
+
+.search-result .search-image {
+  display: inline-block;
+}
+
+.search-result .search-text {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 30px;
+  margin-left: 40px;
+}
+
+.search-result-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.post-name {
+  font-size: 24px;
+  font-weight: bold;
+}

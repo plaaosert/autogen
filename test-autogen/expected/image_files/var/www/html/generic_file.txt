@@ -1,0 +1,5 @@
+This is a generic text file.
+
+It contains newlines.
+It also ends with two newlines.
+
