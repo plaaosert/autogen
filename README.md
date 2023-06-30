@@ -1,11 +1,11 @@
 # what is this
-Autogen is a multi-platform engine for automatically generating CTF challenges, designed primarily for self-study.\
-\
-Challenges are generated using a stack of templates to build a model of a single web server - starting with server software, then site functionality, then a vulnerability.\
-\
-Autogen supports dynamic content within templates, allowing for a huge number of permutations on a single challenge format.\
-\
-The best part? It's as simple as running a Python script*.
+Autogen is a multi-platform engine for automatically generating CTF challenges, designed primarily for self-study.  
+  
+Challenges are generated using a stack of templates to build a model of a single web server - starting with server software, then site functionality, then a vulnerability.  
+  
+Autogen supports dynamic content within templates, allowing for a huge number of permutations on a single challenge format.  
+  
+The best part? It's as simple as running a Python script*.  
 
 *i hope
 
@@ -16,14 +16,14 @@ You need all of the following:
 - the port `9008` to be open on the local machine
 
 # how do i use it
-(Replace `python3` with the name of your Python install.)\
+(Replace `python3` with the name of your Python install.)  
 Just want a challenge? Good. Use `python3 autogen.py -d DIFFICULTY_LEVEL`, where:
 ```
 [0-15]  -> "Easy"
 [15-35] -> "Medium"
 [35+]   -> "Hard"
 ```
-Note there are currently no templates with difficulty higher than 55. Check out the `how can i help` section if you want to change that :-)
+Note there are currently no templates with difficulty higher than 55. Check out the [how can i help](https://github.com/plaaosert/autogen#how-can-i-help) section if you want to change that :-)
 
 Here's the full output of `python3 autogen -h`:
 ```
@@ -53,26 +53,31 @@ autogen.py [arguments]
 ```
 
 # how does it do all this then
+*i'll rewrite this eventually*  
+  
 Each challenge is made up of multiple Docker containers, each serving a specific purpose, such as a webserver or an SQL server. The model used to represent this is
 a stack of templates. All templates inherit from an abstract class, using the same
 main attributes. This means that a theoretically infinite number of templates can be
 stacked on top of each other, making compounding changes. Every Docker container
-is represented by a single stack.\
+is represented by a single stack.  
+  
 At the bottom of the stack is a base template. Base templates will typically contain
 only a basic Dockerfile and any configuration files which need to be modified. If a
 base template is run on its own with no modifications, it should act similar if not
-identical to a fresh install of the service.\
+identical to a fresh install of the service.  
+  
 After selecting a base template, a site template must be selected. Site templates
 implement the full functionality of a working website by copying or modifying new
-files.\
+files.  
+  
 Finally, a vulnerability template slightly changes files placed by previous templates
 to open up one or more security vulnerabilities, as well as placing a flag in a relevant
 location. Both vulnerability and site templates are only ever applied to the template
 stack for a web server, as auxilliary bases are intended to be treated as black boxes
-accessible only to the webserver container.\
+accessible only to the webserver container.  
 
 # how can i help
-Autogen runs on templates. We can never be short on templates! Since each template type is modular, making templates is incredibly simple.\
+Autogen runs on templates. We can never be short on templates! Since each template type is modular, making templates is incredibly simple.  
 Take a look at the wiki (you should add the wiki here plaao) to learn more.
 
 # 7. Future work
