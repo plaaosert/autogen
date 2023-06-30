@@ -19,8 +19,11 @@ You need all of the following:
 
 # how do i use it
 (Replace `python3` with the name of your Python install.)  
-Just want a challenge? Good. Use `python3 autogen.py -d DIFFICULTY_LEVEL`, where:
+  
+Just want a challenge? Good.
+### `python3 autogen.py -d DIFFICULTY_LEVEL`
 ```
+Difficulty level estimates:
 [0-15]  -> "Easy"
 [15-35] -> "Medium"
 [35+]   -> "Hard"
