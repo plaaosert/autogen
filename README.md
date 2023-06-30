@@ -7,7 +7,9 @@ Autogen supports dynamic content within templates, allowing for a huge number of
   
 The best part? It's as simple as running a Python script*.  
 
-*i hope
+*i hope  
+  
+### If you need more information, check out the [**wiki**](https://github.com/plaaosert/autogen/wiki).
 
 # requirements
 You need all of the following:
